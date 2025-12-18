@@ -43,7 +43,7 @@ theme_ash <- function() {
 }
 ```
 
-# Mantle Cell Lymphoma (MCL) {data-stack-name="MCL" background-color="#2E86AB"}
+# Mantle Cell Lymphoma (MCL) {data-stack-name="MCL"}
 
 Novel CAR-T, BTKi Combinations, and Targeted Therapies
 
@@ -607,7 +607,7 @@ ggplot(df, aes(x = Event, y = Rate, fill = Drug)) +
 
 ::::
 
-# Marginal Zone Lymphoma (MZL) {data-stack-name="MZL" background-color="#2E86AB"}
+# Marginal Zone Lymphoma (MZL) {data-stack-name="MZL"}
 
 First CAR-T Approval and Emerging Therapies
 
@@ -915,7 +915,7 @@ ggplot(df, aes(x = Metric, y = Rate, fill = Regimen)) +
 
 ::::
 
-# Waldenström Macroglobulinemia (WM) {data-stack-name="WM" background-color="#2E86AB"}
+# Waldenström Macroglobulinemia (WM) {data-stack-name="WM"}
 
 Fixed-Duration Therapy and High-Risk Strategies
 
@@ -1112,7 +1112,7 @@ ggplot(df, aes(x = Group, y = Rate, fill = Response)) +
 
 ::::
 
-# Clinical Implications {data-stack-name="Summary" background-color="#1A5276"}
+# Clinical Implications {data-stack-name="Summary"}
 
 ::: {.notes}
 進入臨床意涵的總結部分。
