@@ -1,0 +1,36 @@
+project:
+  type: default
+  output-dir: _site
+
+format:
+  revealjs:
+    theme:
+      - default
+      - custom.scss
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    footer: "ASH 2025 | B-Cell Lymphoma Updates"
+    width: 1600
+    height: 900
+    margin: 0.1
+    center: false
+    navigation-mode: linear
+    controls-layout: edges
+    controls-tutorial: false
+    hash: true
+    history: true
+    hash-one-based-index: false
+    fragment-in-url: false
+    transition: none
+    background-transition: none
+    pdf-separate-fragments: false
+    auto-stretch: true
+    revealjs-plugins:
+      - martinomagnifico/simplemenu
+    simplemenu:
+      flat: false
+      barhtml:
+        header: "<ul class='menu'></ul>"
+        footer: ""
+      scale: 0.67
