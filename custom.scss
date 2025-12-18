@@ -1,45 +1,100 @@
 /*-- scss:defaults --*/
-$presentation-heading-color: #1a5276;
-$link-color: #2e86ab;
-$body-color: #2c3e50;
 
 /*-- scss:rules --*/
-.reveal .slide-background {
-  background-color: #ffffff;
+
+// Larger slide numbers
+.reveal .slide-number {
+  font-size: 24px !important;
+  font-weight: 600 !important;
 }
 
+// Taller progress bar
+.reveal .progress {
+  height: 10px !important;
+}
+
+.reveal .progress span {
+  background: #3d6869 !important;
+}
+
+// Headings color
 .reveal h1,
 .reveal h2,
-.reveal h3 {
-  color: $presentation-heading-color;
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: #3d6869 !important;
 }
 
-.reveal .callout-important {
-  border-left-color: #e74c3c;
+// Bold text color
+.reveal strong,
+.reveal b {
+  color: #3d6869 !important;
 }
 
-.reveal .callout-tip {
-  border-left-color: #27ae60;
+// Simplemenu size
+.menubar {
+  font-size: 18px !important;
 }
 
-.reveal table {
-  font-size: 0.8em;
+.menubar > ul a {
+  padding: 0.3em 0.7em !important;
 }
 
+// Agenda active item
+.reveal .agenda-active {
+  color: #3d6869 !important;
+}
+
+// Code block max height (16 lines)
+.reveal pre code {
+  max-height: 22.4em !important;
+  overflow-y: auto !important;
+}
+
+// 10% smaller body font
+.reveal .slides {
+  font-size: 90% !important;
+}
+
+// 10% smaller h2
+.reveal h2 {
+  font-size: 1.44em !important;
+}
+
+// Table styling
 .reveal table th {
-  background-color: #1a5276;
-  color: white;
+  background-color: #3d6869 !important;
+  color: white !important;
 }
 
 .reveal table td {
-  border: 1px solid #ecf0f1;
+  border: 1px solid #ecf0f1 !important;
 }
 
+// Callout styling
+.reveal .callout-important {
+  border-left-color: #e74c3c !important;
+}
+
+.reveal .callout-tip {
+  border-left-color: #27ae60 !important;
+}
+
+// Column layout
+.reveal .columns {
+  display: flex;
+  gap: 20px;
+}
+
+// List item spacing
 .reveal ul li {
   margin-bottom: 0.3em;
 }
 
-.reveal .columns {
-  display: flex;
-  gap: 20px;
+// Section header slides
+.reveal section[data-background-color="#2E86AB"] h1,
+.reveal section[data-background-color="#1A5276"] h1 {
+  color: white !important;
 }

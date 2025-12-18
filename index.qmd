@@ -4,30 +4,6 @@ subtitle: "MCL, MZL, and Waldenström Macroglobulinemia"
 author: "林協霆"
 institute: "和信治癌中心腫瘤內科部"
 date: "December 2025"
-format:
-  revealjs:
-    theme: [default, custom.scss]
-    slide-number: true
-    chalkboard: false
-    preview-links: auto
-    logo: ""
-    footer: "ASH 2025 | B-Cell Lymphoma Updates"
-    transition: none
-    width: 1600
-    height: 900
-    revealjs-plugins:
-      - martinomagnifico/simplemenu
-    simplemenu:
-      flat: false
-      barhtml:
-        header: "<ul class='menu'></ul>"
-        footer: ""
-      scale: 0.67
-filters:
-  - andrie/reveal-auto-agenda
-auto-agenda:
-  bullets: numbered
-  heading: Agenda
 execute:
   echo: false
   warning: false
@@ -67,7 +43,7 @@ theme_ash <- function() {
 }
 ```
 
-# Mantle Cell Lymphoma (MCL) {background-color="#2E86AB"}
+# Mantle Cell Lymphoma (MCL) {data-stack-name="MCL" background-color="#2E86AB"}
 
 Novel CAR-T, BTKi Combinations, and Targeted Therapies
 
@@ -631,7 +607,7 @@ ggplot(df, aes(x = Event, y = Rate, fill = Drug)) +
 
 ::::
 
-# Marginal Zone Lymphoma (MZL) {background-color="#2E86AB"}
+# Marginal Zone Lymphoma (MZL) {data-stack-name="MZL" background-color="#2E86AB"}
 
 First CAR-T Approval and Emerging Therapies
 
@@ -939,7 +915,7 @@ ggplot(df, aes(x = Metric, y = Rate, fill = Regimen)) +
 
 ::::
 
-# Waldenström Macroglobulinemia (WM) {background-color="#2E86AB"}
+# Waldenström Macroglobulinemia (WM) {data-stack-name="WM" background-color="#2E86AB"}
 
 Fixed-Duration Therapy and High-Risk Strategies
 
@@ -1136,7 +1112,7 @@ ggplot(df, aes(x = Group, y = Rate, fill = Response)) +
 
 ::::
 
-# Clinical Implications {background-color="#1A5276"}
+# Clinical Implications {data-stack-name="Summary" background-color="#1A5276"}
 
 ::: {.notes}
 進入臨床意涵的總結部分。
