@@ -1,0 +1,45 @@
+/*-- scss:defaults --*/
+$presentation-heading-color: #1a5276;
+$link-color: #2e86ab;
+$body-color: #2c3e50;
+
+/*-- scss:rules --*/
+.reveal .slide-background {
+  background-color: #ffffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  color: $presentation-heading-color;
+}
+
+.reveal .callout-important {
+  border-left-color: #e74c3c;
+}
+
+.reveal .callout-tip {
+  border-left-color: #27ae60;
+}
+
+.reveal table {
+  font-size: 0.8em;
+}
+
+.reveal table th {
+  background-color: #1a5276;
+  color: white;
+}
+
+.reveal table td {
+  border: 1px solid #ecf0f1;
+}
+
+.reveal ul li {
+  margin-bottom: 0.3em;
+}
+
+.reveal .columns {
+  display: flex;
+  gap: 20px;
+}

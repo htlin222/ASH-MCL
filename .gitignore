@@ -1,0 +1,62 @@
+# Node
+node_modules/
+package-lock.json
+package.json
+
+# Workspace (temporary files)
+workspace/
+
+# Quarto
+/.quarto/
+/_site/
+/_book/
+/_manuscript/
+
+# Rendered output
+*.html
+*.pdf
+!template.html
+
+# Knitr cache and figures
+/*_cache/
+/*_files/
+/index_files/
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Environment
+.env
+.env.local

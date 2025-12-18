@@ -1,0 +1,1271 @@
+---
+title: "ASH 2025 B-Cell Lymphoma Updates"
+subtitle: "MCL, MZL, and Waldenström Macroglobulinemia"
+author: "林協霆"
+institute: "和信治癌中心腫瘤內科部"
+date: "December 2025"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    logo: ""
+    footer: "ASH 2025 | B-Cell Lymphoma Updates"
+    transition: none
+    width: 1600
+    height: 900
+    revealjs-plugins:
+      - martinomagnifico/simplemenu
+    simplemenu:
+      flat: false
+      barhtml:
+        header: "<ul class='menu'></ul>"
+        footer: ""
+      scale: 0.67
+filters:
+  - andrie/reveal-auto-agenda
+auto-agenda:
+  bullets: numbered
+  heading: Agenda
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(scales)
+
+# Color palette - Medical/Scientific theme
+colors <- list(
+  primary = "#1A5276",
+  secondary = "#2E86AB",
+  accent = "#E74C3C",
+  success = "#27AE60",
+  warning = "#F39C12",
+  dark = "#2C3E50",
+  light = "#ECF0F1"
+)
+
+# Custom theme for plots
+theme_ash <- function() {
+  theme_minimal() +
+    theme(
+      plot.title = element_text(size = 18, face = "bold", color = colors$dark),
+      plot.subtitle = element_text(size = 14, color = colors$secondary),
+      axis.title = element_text(size = 12, face = "bold"),
+      axis.text = element_text(size = 11),
+      legend.title = element_text(size = 11, face = "bold"),
+      legend.text = element_text(size = 10),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.x = element_blank()
+    )
+}
+```
+
+# Mantle Cell Lymphoma (MCL) {background-color="#2E86AB"}
+
+Novel CAR-T, BTKi Combinations, and Targeted Therapies
+
+::: {.notes}
+接下來我們進入套細胞淋巴瘤（MCL）的部分。
+
+ASH 2025 在 MCL 領域有幾個重大突破：
+1. GLPG5101 展示了新一代 CAR-T 的即時製造技術
+2. ECHO 試驗確立了 acalabrutinib 加化療的一線地位
+3. BOVen 方案為 TP53 突變患者帶來前所未有的療效
+4. Pirtobrutinib 作為非共價 BTKi 獲得完整批准
+
+這些進展反映了 MCL 治療從傳統化療向精準醫學的典範轉移。
+:::
+
+## GLPG5101: Next-gen CAR-T with 7-day manufacturing {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### ATALANTA-1 trial (NCT06561425)
+
+**Background**
+
+- Fresh CAR-T with decentralized manufacturing ^[FDA RMAT designation August 2025]
+- Eliminates 3-6 week traditional manufacturing delay
+
+**Method**
+
+- N=24 MCL patients, single fixed IV dose
+- **7-day median vein-to-vein time** (96% achieved)
+
+**Results**
+
+- **ORR: 100%** (versus 85-91% brexu-cel historical)
+- **CRR: 96%** (versus 59-82% brexu-cel)
+- MRD negative: 90% in evaluable patients
+- CAR-T persistence: Up to 21 months
+
+::: aside
+Galapagos NV. ATALANTA-1 trial results. ASH 2025 Abstract #662.
+:::
+:::
+
+::: {.column width="55%"}
+```{r glpg5101-orr}
+df <- data.frame(
+  Treatment = factor(c("GLPG5101", "Brexu-cel\n(Historical)"),
+                     levels = c("GLPG5101", "Brexu-cel\n(Historical)")),
+  ORR = c(100, 88),
+  CRR = c(96, 70)
+)
+
+df_long <- df %>% pivot_longer(cols = c(ORR, CRR), names_to = "Response", values_to = "Rate")
+
+ggplot(df_long, aes(x = Treatment, y = Rate, fill = Response)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 5, fontface = "bold") +
+  scale_fill_manual(values = c("ORR" = colors$secondary, "CRR" = colors$success)) +
+  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
+  labs(title = "Response Rates: GLPG5101 vs Historical",
+       y = "Response Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+:::
+
+:::::
+
+::: {.notes}
+GLPG5101 的關鍵優勢在於其「即時製造」技術：
+
+**製造時間縮短**：傳統 CAR-T 需要 3-6 週，GLPG5101 僅需 7 天
+- 這消除了等待期間疾病惡化的風險
+- 不需要過渡性化療（bridging therapy）
+
+**療效數據令人印象深刻**：
+- 100% 總緩解率遠超 brexu-cel 的歷史數據（85-91%）
+- 96% 完全緩解率
+- 90% 達到 MRD 陰性
+
+**機制優勢**：新鮮製造保留了幹細胞樣早期記憶 T 細胞表型，這與持久緩解相關。CAR-T 細胞在輸注後可持續存在長達 21 個月。
+:::
+
+## GLPG5101: Safety Profile & Regulatory Status {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Safety Profile
+
+| Adverse Event | GLPG5101 | Brexu-cel |
+|---------------|----------|-----------|
+| Grade ≥3 CRS | 0-4% | 8-15% |
+| Severe Neurotoxicity | 4% | 31-32% |
+| Bridging Chemo | Not required | Required |
+
+- Most common AEs: hematologic (manageable)
+- DOR and PFS: 83% at 9 months
+- No treatment-related deaths
+:::
+
+::: {.column width="50%"}
+### Regulatory Status
+
+- **FDA RMAT Designation:** August 2025
+- Technology proof-of-concept established
+
+### ⚠️ Commercial Uncertainty
+
+- **Galapagos announced cell therapy wind-down:** October 2025
+- 365 employees affected across 5 facilities
+- No viable acquisition offers received
+- Future development uncertain despite promising data
+:::
+
+:::::
+
+::: {.notes}
+關於 GLPG5101 的安全性與法規狀態：
+
+**安全性優勢**：
+- Grade ≥3 CRS 僅 0-4%（相比 brexu-cel 的 8-15%）
+- 嚴重神經毒性僅 4%（相比歷史上的 31-32%）
+- 不需要過渡性化療，減少額外毒性暴露
+
+**重要警告**：2025 年 10 月，Galapagos 宣布結束細胞療法業務，影響 365 名員工。儘管技術獲得 FDA RMAT 認定，但商業前景不確定。這提醒我們：優秀的臨床數據不一定等於商業成功。
+:::
+
+## ECHO trial: Acalabrutinib + BR for frontline MCL {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Phase III (NCT02972840)
+
+**Background**
+
+- Transplant-ineligible untreated MCL ^[FDA traditional approval January 16, 2025]
+- N=598 patients, median follow-up 50 months
+
+**Method**
+
+- Acalabrutinib 100mg BID + Bendamustine-Rituximab
+- versus Placebo + BR
+
+**Results**
+
+- **mPFS: 66.4 versus 49.6 months**
+- HR 0.73 (95% CI 0.57-0.94, p=0.016)
+- **27% reduction** in progression/death risk
+- Ki-67 ≥30%: HR 0.69 (high proliferation benefit)
+
+::: aside
+Wang M, et al. Acalabrutinib plus bendamustine-rituximab in untreated MCL: ECHO trial. *J Clin Oncol.* 2025. doi:10.1200/JCO.24.02134
+:::
+:::
+
+::: {.column width="55%"}
+```{r echo-pfs}
+df <- data.frame(
+  Treatment = factor(c("Acalabrutinib + BR", "Placebo + BR"),
+                     levels = c("Acalabrutinib + BR", "Placebo + BR")),
+  PFS = c(66.4, 49.6)
+)
+
+ggplot(df, aes(x = Treatment, y = PFS, fill = Treatment)) +
+  geom_bar(stat = "identity", width = 0.6) +
+  geom_text(aes(label = paste0(PFS, " mo")), vjust = -0.5, size = 6, fontface = "bold") +
+  scale_fill_manual(values = c(colors$success, colors$accent)) +
+  scale_y_continuous(limits = c(0, 80), breaks = seq(0, 80, 20)) +
+  labs(title = "Median Progression-Free Survival",
+       subtitle = "HR 0.73 (p=0.016)",
+       y = "Months", x = "") +
+  theme_ash() +
+  theme(legend.position = "none")
+```
+:::
+
+::::
+
+## ECHO Trial: Safety & Regulatory {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Additional Efficacy Data
+
+```{r echo-mrd}
+df <- data.frame(
+  Group = factor(c("Acalabrutinib", "Placebo", "Acalabrutinib", "Placebo"),
+                 levels = c("Acalabrutinib", "Placebo")),
+  Metric = c("MRD Conversion\n(pos→neg)", "MRD Conversion\n(pos→neg)",
+             "MRD Reversion\n(neg→pos)", "MRD Reversion\n(neg→pos)"),
+  Rate = c(37.5, 20, 5.85, 15)
+)
+
+ggplot(df, aes(x = Metric, y = Rate, fill = Group)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 4) +
+  scale_fill_manual(values = c(colors$success, colors$accent)) +
+  scale_y_continuous(limits = c(0, 45)) +
+  labs(title = "MRD Dynamics", y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+:::
+
+::: {.column width="50%"}
+### Regulatory Status
+
+- **FDA Traditional Approval:** January 16, 2025
+- Approved for transplant-ineligible untreated MCL
+- Converted from accelerated approval
+- **EMA Approval:** May 6, 2025
+- Project Orbis international review collaboration
+
+### Subgroup Analysis
+
+- TP53 mutant: HR 0.88 (modest benefit)
+- ORR: 91% vs 88%
+- CR rate: 66.6% vs 53.5%
+:::
+
+:::::
+
+::: {.notes}
+ECHO 試驗是一個里程碑式的第三期研究：
+
+**關鍵發現**：
+- 在 598 名不適合移植的 MCL 患者中，加入 acalabrutinib 將中位 PFS 從 49.6 個月延長至 66.4 個月
+- 這代表 27% 的疾病進展或死亡風險下降
+
+**MRD 動態值得關注**：
+- Acalabrutinib 組有 37.5% 的 MRD 陽性患者轉為陰性（對照組僅 20%）
+- MRD 逆轉率也更低（5.85% vs 15%）
+
+**臨床意義**：此試驗導致 FDA 於 2025 年 1 月 16 日給予傳統批准，確立了 acalabrutinib + BR 作為不適合移植患者的一線標準治療。
+:::
+
+## BOVen: Chemo-free triplet for TP53-mutant MCL {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Phase II (NCT03824483)
+
+**Background**
+
+- TP53-mutant MCL: historical mPFS 0.9y, mOS 1.8y ^[NCCN Category 2A recommendation]
+- N=25 TP53-mutant patients
+
+**Method**
+
+- **Zanubrutinib + Obinutuzumab + Venetoclax**
+- MRD-guided discontinuation after 24 cycles
+
+**Results**
+
+- **ORR: 96%** | **CRR: 88%**
+- **2-year PFS: 72%** (95% CI 56-92%)
+- **2-year OS: 76%**
+- uMRD (10⁻⁵): 95% at cycle 13
+
+::: aside
+Kumar A, et al. Zanubrutinib, obinutuzumab, and venetoclax in TP53-mutant MCL. *Blood.* 2025;145(5):497-507. doi:10.1182/blood.2024026123
+:::
+:::
+
+::: {.column width="55%"}
+```{r boven-efficacy}
+df <- data.frame(
+  Outcome = factor(c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD"),
+                   levels = c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD")),
+  Rate = c(96, 88, 72, 76, 95)
+)
+
+ggplot(df, aes(x = Outcome, y = Rate, fill = Outcome)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), vjust = -0.5, size = 5, fontface = "bold") +
+  scale_fill_manual(values = c(colors$secondary, colors$success, colors$warning,
+                                colors$primary, colors$accent)) +
+  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
+  labs(title = "BOVen Efficacy in TP53-Mutant MCL",
+       subtitle = "Unprecedented outcomes in historically poor prognosis group",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "none")
+```
+:::
+
+::::
+
+## BOVen: Safety & Guideline Update {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Safety Profile
+
+| Adverse Event | Rate |
+|---------------|------|
+| Diarrhea | 64% (mostly low-grade) |
+| COVID-19 infection | 56% |
+| Infusion reaction | 24% |
+| Neutropenia | 32% |
+| **Grade 4 TRAEs** | **0%** |
+
+- Time-limited therapy possible with MRD guidance
+- No treatment discontinuation due to toxicity
+:::
+
+::: {.column width="50%"}
+### Regulatory & Guidelines
+
+::: {.callout-important}
+## NCCN Category 2A
+BOVen now included for TP53-mutant MCL
+:::
+
+- Published in **Blood** January 2025
+- Expansion cohort: additional 25 patients enrolling
+- **Paradigm shift** for high-risk MCL
+- First effective chemo-free option for TP53-MCL
+
+### Mechanism
+
+- BTK inhibition (zanubrutinib)
+- BCL-2 inhibition (venetoclax)
+- Enhanced ADCC (obinutuzumab)
+:::
+
+:::::
+
+::: {.notes}
+BOVen 試驗是 TP53 突變 MCL 治療的重大突破：
+
+**歷史背景**：TP53 突變 MCL 預後極差，北歐 MCL2/3 試驗顯示中位 PFS 僅 0.9 年，中位 OS 僅 1.8 年。傳統化療對這群患者幾乎無效。
+
+**BOVen 三聯方案的科學依據**：
+- Zanubrutinib：BTK 抑制，阻斷 B 細胞受體信號
+- Venetoclax：BCL-2 抑制，直接觸發凋亡
+- Obinutuzumab：增強的 ADCC 和直接細胞死亡
+
+**關鍵結果**：
+- 2 年 PFS 72%——這在歷史上預後極差的族群中前所未有
+- 95% 達到不可檢測的 MRD
+- 無 Grade 4 治療相關不良事件
+
+**臨床意義**：NCCN 已將 BOVen 納入 TP53 突變 MCL 的 2A 類建議。這是首個對這個高風險族群有效的無化療選擇。
+:::
+
+## MAVO: Acalabrutinib + Venetoclax + Obinutuzumab {.smaller}
+
+::: {.notes}
+MAVO 試驗探討另一個無化療三聯組合：
+
+**與 BOVen 的比較**：
+- MAVO 使用 acalabrutinib（而非 zanubrutinib）
+- 兩者都結合 venetoclax 和 obinutuzumab
+- 兩項試驗都證明三聯方案可達到深度緩解
+
+**關鍵發現**：
+- 復發/難治性患者：83% ORR，78% CR
+- 初治患者：86% ORR，81% CR
+- TP53 異常亞組表現良好：88% ORR
+
+**MRD 數據支持治療中斷**：
+- 86% 初治患者達到 MRD 陰性 CR
+- TP53 突變患者中 91% 達到 MRD 陰性
+- 這支持了「緩解適應性治療持續時間」的概念
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Phase I/II (NCT04855695)
+
+**Populations**
+
+- R/R MCL (n=18)
+- Treatment-naïve (n=21)
+
+**Results - R/R MCL**
+
+- ORR: 83%, CR: 78%
+- 18-month PFS: 77%
+
+**Results - Treatment-Naïve**
+
+- ORR: 86%, CR: 81%
+- TP53 aberrant (n=8): 88% ORR
+- **MRD-negative CR: 86%**
+- TP53 MRD-neg CR: 91%
+:::
+
+::: {.column width="55%"}
+```{r mavo-response}
+df <- data.frame(
+  Population = factor(rep(c("R/R MCL", "TN MCL", "TP53 Aberrant"), each = 2),
+                      levels = c("R/R MCL", "TN MCL", "TP53 Aberrant")),
+  Response = rep(c("ORR", "CR"), 3),
+  Rate = c(83, 78, 86, 81, 88, 78)
+)
+
+ggplot(df, aes(x = Population, y = Rate, fill = Response)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 4.5, fontface = "bold") +
+  scale_fill_manual(values = c("ORR" = colors$secondary, "CR" = colors$success)) +
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 25)) +
+  labs(title = "MAVO Response Rates by Population",
+       subtitle = "MRD-guided treatment discontinuation feasible",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+:::
+
+::::
+
+## Pirtobrutinib: Non-covalent BTKi for cBTKi-refractory MCL {.smaller}
+
+::: {.notes}
+Pirtobrutinib 是首個非共價 BTK 抑制劑，為 BTKi 抗藥性疾病開闢新途徑。
+
+**為什麼需要非共價 BTKi？**
+- 50-75% 的 cBTKi 進展患者帶有 C481S 突變
+- 此突變將半胱氨酸變為絲氨酸，破壞共價結合位點
+- Ibrutinib、acalabrutinib、zanubrutinib 都依賴 C481 進行共價結合
+
+**Pirtobrutinib 的機制優勢**：
+- 在遠離 C481 的位置進行可逆結合
+- 對野生型和 C481S 突變 BTK 均維持納莫爾級效力
+- 對 BTK 的選擇性是激酶組其他 98% 激酶的 300 倍以上
+
+**BRUIN 研究結果**：
+- 57.8% ORR——在歷史上生存期僅 2.9-8.4 個月的族群中
+- 中位緩解持續時間 21.6 個月——顯著的持久性
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### BRUIN study (NCT03740529)
+
+**Background**
+
+- C481S mutation in 50-75% of cBTKi progressors ^[FDA full approval December 2025]
+- N=90 prior cBTKi patients
+
+**Mechanism**
+
+- Reversible binding **away from C481**
+- Active against WT and C481S-mutant BTK
+- >300-fold selectivity versus 98% of kinome
+
+**Results**
+
+- **ORR: 57.8%** (95% CI 46.9-68.1%)
+- **Median DOR: 21.6 months**
+- Historical post-BTKi survival: 2.9-8.4 months
+
+::: aside
+Wang ML, et al. Pirtobrutinib in covalent BTKi-pretreated MCL: BRUIN study. *J Clin Oncol.* 2023;41(24):3988-3997. doi:10.1200/JCO.23.00562
+:::
+:::
+
+::: {.column width="55%"}
+```{r pirtobrutinib}
+df <- data.frame(
+  Metric = factor(c("ORR", "CR", "Median DOR\n(months)"),
+                  levels = c("ORR", "CR", "Median DOR\n(months)")),
+  Value = c(57.8, 20, 21.6),
+  Type = c("Response", "Response", "Duration")
+)
+
+ggplot(df, aes(x = Metric, y = Value, fill = Type)) +
+  geom_bar(stat = "identity", width = 0.6) +
+  geom_text(aes(label = ifelse(Type == "Response", paste0(Value, "%"), Value)),
+            vjust = -0.5, size = 5, fontface = "bold") +
+  scale_fill_manual(values = c("Response" = colors$secondary, "Duration" = colors$warning)) +
+  scale_y_continuous(limits = c(0, 70)) +
+  labs(title = "Pirtobrutinib in cBTKi-Refractory MCL",
+       subtitle = "First-in-class non-covalent BTKi",
+       y = "Value", x = "") +
+  theme_ash() +
+  theme(legend.position = "none")
+```
+:::
+
+::::
+
+## Pirtobrutinib: Safety & Regulatory {.smaller}
+
+::: {.notes}
+Pirtobrutinib 的安全性優勢值得強調：
+
+**心房顫動風險大幅降低**：
+- Pirtobrutinib 僅 1.8%（相比 ibrutinib 的 10-15%）
+- 這對需要長期治療的患者極為重要
+- 可能與其高度 BTK 選擇性有關（>300 倍）
+
+**因不良事件停藥率極低**：僅 3%——遠低於共價 BTKi 的歷史數據
+
+**法規里程碑**：
+- 2023 年 12 月獲得加速批准
+- **2025 年 12 月 3 日轉為完整批准**——基於 BRUIN 研究的確認性數據
+- 這是首個獲得 FDA 完整批准的非共價 BTKi
+
+**在 WM 中的活性**：71.3% MRR——雖未獲特定批准，但 NCCN 支持超適應症使用
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Safety Profile
+
+```{r pirtobrutinib-safety}
+df <- data.frame(
+  Event = factor(c("AF/Flutter", "AF/Flutter", "Discontinuation\nfor AE", "Discontinuation\nfor AE"),
+                 levels = c("AF/Flutter", "Discontinuation\nfor AE")),
+  Drug = factor(c("Pirtobrutinib", "Ibrutinib", "Pirtobrutinib", "cBTKi"),
+                levels = c("Pirtobrutinib", "Ibrutinib", "cBTKi")),
+  Rate = c(1.8, 12.5, 3, 15)
+)
+
+ggplot(df, aes(x = Event, y = Rate, fill = Drug)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 4) +
+  scale_fill_manual(values = c("Pirtobrutinib" = colors$success,
+                                "Ibrutinib" = colors$accent,
+                                "cBTKi" = colors$warning)) +
+  scale_y_continuous(limits = c(0, 20)) +
+  labs(title = "Safety: Pirtobrutinib vs Covalent BTKi",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+:::
+
+::: {.column width="50%"}
+### Regulatory Status
+
+::: {.callout-tip}
+## FDA Full Approval
+**December 3, 2025** - Converted from accelerated approval (Dec 2023)
+:::
+- First-in-class non-covalent BTKi
+- Phase III BRUIN MCL-321 ongoing (vs cBTKi in BTKi-naïve R/R MCL)
+
+### Waldenström Activity
+
+- **MRR: 71.3%** in prior cBTKi patients
+- MRR: 66.7% in cBTKi-refractory
+- Off-label NCCN support for prior-treated WM
+:::
+
+::::
+
+# Marginal Zone Lymphoma (MZL) {background-color="#2E86AB"}
+
+First CAR-T Approval and Emerging Therapies
+
+::: {.notes}
+接下來進入邊緣區淋巴瘤（MZL）的部分。
+
+MZL 約佔非何杰金氏淋巴瘤的 10%，包括三種亞型：
+- 結外 MALT 淋巴瘤
+- 脾臟邊緣區淋巴瘤
+- 淋巴結邊緣區淋巴瘤
+
+ASH 2025 的重大突破：
+1. **Liso-cel 獲批**：2025 年 12 月 4 日，FDA 批准首個用於 MZL 的 CAR-T 療法
+2. **BGB-16673**：BTK 降解劑在 BTKi 抗藥性疾病中顯示活性
+3. **Evorpacept**：CD47 阻斷劑顯著提高完全緩解率
+
+這些進展填補了 MZL 缺乏疾病專屬治療的空白。
+:::
+
+## Liso-cel: First CAR-T approved for MZL {.smaller}
+
+::: {.notes}
+Lisocabtagene maraleucel（Liso-cel）在 MZL 的獲批是歷史性的里程碑。
+
+**為何重要？**
+- 這是**首個**獲 FDA 批准用於 MZL 的 CAR-T 療法
+- 在此之前，MZL 沒有疾病專屬的批准療法
+- Breyanzi 現已有 5 個癌症適應症——超過任何其他 CD19 CAR-T 產品
+
+**TRANSCEND FL 試驗數據**：
+- ITT 族群（n=77）：84.4% ORR，55.8% CR
+- 療效可評估族群（n=66）：95.5% ORR，62.1% CR
+- 差異反映了缺乏可測量疾病或追蹤不足的患者
+
+**持久性令人印象深刻**：
+- 24 個月時 88.6% 的緩解者維持緩解
+- 24 個月 PFS 85.7%
+- 24 個月 OS 90.4%
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### TRANSCEND FL (NCT04245839)
+
+**Background**
+
+- MZL ~10% of NHL, 3 subtypes ^[FDA approval December 4, 2025]
+- No prior disease-specific approved therapy
+
+**Method**
+
+- CD19 CAR-T, **1:1 CD4:CD8 composition**
+- N=77 (ITT) / 66 (evaluable)
+
+**Results**
+
+- **ORR: 84.4% (ITT) / 95.5% (evaluable)**
+- **CR: 55.8% (ITT) / 62.1% (evaluable)**
+- 24-month DOR: 88.6% maintained
+- 24-month PFS: 85.7%
+- 24-month OS: 90.4%
+
+::: aside
+FDA. Breyanzi (lisocabtagene maraleucel) approval for MZL. December 4, 2025. NCT04245839.
+:::
+:::
+
+::: {.column width="55%"}
+```{r lisocel}
+df <- data.frame(
+  Population = factor(rep(c("ITT (n=77)", "Evaluable (n=66)"), each = 2),
+                      levels = c("ITT (n=77)", "Evaluable (n=66)")),
+  Response = rep(c("ORR", "CR"), 2),
+  Rate = c(84.4, 55.8, 95.5, 62.1)
+)
+
+ggplot(df, aes(x = Response, y = Rate, fill = Population)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 5, fontface = "bold") +
+  scale_fill_manual(values = c(colors$secondary, colors$success)) +
+  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
+  labs(title = "Liso-cel Response Rates in MZL",
+       subtitle = "TRANSCEND FL Trial",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+:::
+
+::::
+
+## Liso-cel: Safety & FDA Approval {.smaller}
+
+::: {.notes}
+Liso-cel 的安全性特徵在 CAR-T 產品中具有優勢：
+
+**CRS 管理**：
+- 76% 發生任何級別 CRS
+- 僅 4% 為 Grade 3
+- **無 Grade 4-5 CRS 事件**
+
+**神經毒性**：
+- 33% 任何級別
+- 僅 4% 為 Grade 3
+
+**為何安全性較佳？**
+Liso-cel 的獨特之處在於其**1:1 CD4:CD8 定義組成**。這種精確的細胞比例提供：
+- 更可預測的藥代動力學
+- 跨所有適應症一致的安全性
+- 比其他 CAR-T 產品更低的嚴重神經毒性
+
+**法規批准**：2025 年 12 月 4 日——這是 Breyanzi 的第五個適應症
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Safety Profile
+
+```{r lisocel-safety}
+df <- data.frame(
+  Event = factor(c("CRS\n(Any)", "CRS\n(Gr 3)", "Neuro\n(Any)", "Neuro\n(Gr 3)"),
+                 levels = c("CRS\n(Any)", "CRS\n(Gr 3)", "Neuro\n(Any)", "Neuro\n(Gr 3)")),
+  Rate = c(76, 4, 33, 4)
+)
+
+ggplot(df, aes(x = Event, y = Rate, fill = Event)) +
+  geom_bar(stat = "identity", width = 0.6) +
+  geom_text(aes(label = paste0(Rate, "%")), vjust = -0.5, size = 5, fontface = "bold") +
+  scale_fill_manual(values = c(colors$warning, colors$accent, colors$secondary, colors$accent)) +
+  scale_y_continuous(limits = c(0, 90)) +
+  labs(title = "Liso-cel Safety in MZL",
+       subtitle = "No Grade 4-5 CRS events",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "none")
+```
+:::
+
+::: {.column width="50%"}
+### Regulatory Status
+
+::: {.callout-tip}
+## FDA Approval: December 4, 2025
+**First CAR-T therapy approved for MZL**
+:::
+
+- Fifth cancer indication for Breyanzi
+- Most approved indications of any CD19 CAR-T
+- Requirement: ≥2 prior lines of systemic therapy
+- Orphan drug designation granted
+
+### Predictable Pharmacokinetics
+
+- Unique 1:1 CD4:CD8 defined composition
+- Consistent safety across all liso-cel indications
+- Lower severe neurotoxicity than other CAR-T products
+:::
+
+::::
+
+## BGB-16673: BTK Degrader for BTKi-Resistant Disease {.smaller}
+
+::: {.notes}
+BGB-16673 代表 BTK 標靶療法的下一個進化步驟：從「抑制」到「降解」。
+
+**機制創新**：
+- 這是一種 CDAC（Cereblon E3 ligase 招募化合物）
+- 招募 cereblon E3 連接酶到 BTK
+- 誘導 BTK 泛素化和蛋白酶體降解
+- **完全消除 BTK 蛋白**，而非僅抑制其活性
+
+**為何降解優於抑制？**
+- 對 C481S 突變有效（共價 BTKi 的主要抗藥機制）
+- 對「激酶死亡」支架突變（如 L528W）也有效
+- 這些突變透過 BTK 的非酶支架功能維持下游信號
+
+**臨床數據**：
+- MZL：67% ORR
+- CLL/SLL：94.4% ORR（200mg 劑量）
+- 第三期試驗已啟動：BGB-16673 vs Pirtobrutinib 頭對頭比較
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### CaDAnCe-101 Trial (NCT05006716)
+
+**Mechanism**
+
+- CDAC recruits **cereblon E3 ligase**
+- Induces BTK ubiquitination and proteasomal degradation
+- Eliminates entire BTK protein (not just inhibition)
+
+**Targets**
+
+- C481S mutations
+- "Kinase-dead" scaffold mutations (L528W)
+- Active regardless of prior BTKi exposure
+
+**Results**
+
+- **MZL ORR: 67%** in response-evaluable
+- **CLL/SLL ORR: 94.4%** at 200mg dose (RDFE)
+:::
+
+::: {.column width="55%"}
+```{r bgb16673}
+df <- data.frame(
+  Disease = factor(c("MZL", "CLL/SLL\n(200mg)"),
+                   levels = c("MZL", "CLL/SLL\n(200mg)")),
+  ORR = c(67, 94.4)
+)
+
+ggplot(df, aes(x = Disease, y = ORR, fill = Disease)) +
+  geom_bar(stat = "identity", width = 0.6) +
+  geom_text(aes(label = paste0(ORR, "%")), vjust = -0.5, size = 6, fontface = "bold") +
+  scale_fill_manual(values = c(colors$secondary, colors$success)) +
+  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
+  labs(title = "BGB-16673 BTK Degrader ORR",
+       subtitle = "Active in BTKi-pretreated patients",
+       y = "ORR (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "none")
+```
+
+**Phase 3 trial activated:** BGB-16673 vs Pirtobrutinib head-to-head
+:::
+
+::::
+
+## Evorpacept: CD47 Blockade + R² for Frontline iNHL {.smaller}
+
+::: {.notes}
+Evorpacept 代表了一種全新的免疫檢查點機制。
+
+**CD47-SIRPα 途徑**：
+- 腫瘤細胞表面的 CD47 與巨噬細胞上的 SIRPα 結合
+- 傳遞「別吃我」（don't eat me）信號，抑制吞噬作用
+- 這使腫瘤能夠逃避先天免疫監控
+
+**Evorpacept 的作用**：
+- 阻斷 CD47-SIRPα 相互作用
+- 將信號從「別吃我」轉換為允許抗體依賴性細胞吞噬（ADCP）
+- 與 rituximab 協同作用：rituximab 提供標靶，evorpacept 允許吞噬
+
+**驚人的臨床結果**：
+- CR 率達 92%（相比歷史 R² 的約 50%）
+- ORR 100%
+- 這在初治惰性 NHL（包括 10 名 MZL 患者）中觀察到
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Phase II (ASH 2025)
+
+**Mechanism**
+
+- Blocks CD47-SIRPα "don't eat me" signal
+- Enables antibody-dependent cellular phagocytosis
+
+**Population**
+
+- N=24 (14 FL, 10 MZL)
+- Previously untreated indolent NHL
+
+**Method**
+
+- Evorpacept + Rituximab + Lenalidomide (R²)
+
+**Results**
+
+- **CR rate: 92%** (vs ~50% historical R²)
+- **ORR: 100%**
+- 1-year PFS: 91%
+- 1-year OS: 100%
+:::
+
+::: {.column width="55%"}
+```{r evorpacept}
+df <- data.frame(
+  Regimen = factor(rep(c("Evorpacept + R²", "R² Historical"), 4),
+                   levels = c("Evorpacept + R²", "R² Historical")),
+  Metric = factor(rep(c("CR", "ORR", "1yr PFS", "1yr OS"), each = 2),
+                  levels = c("CR", "ORR", "1yr PFS", "1yr OS")),
+  Rate = c(92, 50, 100, 80, 91, 75, 100, 95)
+)
+
+ggplot(df, aes(x = Metric, y = Rate, fill = Regimen)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 4) +
+  scale_fill_manual(values = c(colors$success, colors$light)) +
+  scale_y_continuous(limits = c(0, 115), breaks = seq(0, 100, 25)) +
+  labs(title = "Evorpacept + R² vs Historical R²",
+       subtitle = "CD47 blockade dramatically improves CR rate",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+:::
+
+::::
+
+# Waldenström Macroglobulinemia (WM) {background-color="#2E86AB"}
+
+Fixed-Duration Therapy and High-Risk Strategies
+
+::: {.notes}
+進入華氏巨球蛋白血症（WM）的部分。
+
+WM 是一種罕見的惰性 B 細胞淋巴瘤，特徵是：
+- 骨髓中淋巴漿細胞浸潤
+- 血清單克隆 IgM 升高
+- MYD88 L265P 突變（>90% 的患者）
+
+**ASH 2025 的關鍵進展**：
+1. **固定期限療法**：Pirtobrutinib + Venetoclax 組合顯示 100% ORR
+2. **高風險疾病策略**：Loncastuximab 在 TP53 改變患者中顯示卓越活性
+3. **分子亞型研究**：MBC-like vs PC-like 亞型可能預測治療反應
+
+這些進展挑戰了 WM 需要無限期 BTKi 治療的傳統觀念。
+:::
+
+## Pirtobrutinib + Venetoclax: Fixed-Duration WM Therapy {.smaller}
+
+::: {.notes}
+Dana-Farber 的這項第二期研究是 WM 治療的重要突破。
+
+**為何固定期限療法重要？**
+- WM 患者傳統上需要無限期 BTKi 治療
+- 長期 ibrutinib 使用有 23.5% 心房顫動風險
+- 累積毒性和抗藥性是主要顧慮
+
+**Pirtobrutinib + Venetoclax 組合的優勢**：
+- 非共價 BTKi（較低心臟毒性）+ BCL-2 抑制（深度緩解）
+- 固定 24 週期口服療法
+- 100% ORR，56% CR/VGPR
+
+**Jorge Castillo 博士的評論**：
+「緩解深度超出每種藥物單獨預期」——暗示可能成為新的護理標準
+
+**重要**：至今無心律不整事件
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Dana-Farber Phase II
+
+**Background**
+
+- WM typically requires indefinite BTKi therapy
+- Cumulative toxicities and resistance concerns
+
+**Population**
+
+- N=27 evaluable (MYD88-mutant)
+- Previously treated, symptomatic
+
+**Method**
+
+- Fixed 24-cycle oral combination
+
+**Results**
+
+- **ORR: 100%**
+- **CR/VGPR: 56%** (exceeds futility threshold)
+- MRR: 87%
+- Median time to VGPR: 1.9 months
+- No arrhythmia events to date
+:::
+
+::: {.column width="55%"}
+```{r pirto-ven}
+df <- data.frame(
+  Response = factor(c("CR/VGPR", "PR", "MR"),
+                    levels = c("CR/VGPR", "PR", "MR")),
+  Rate = c(56, 31, 13)
+)
+
+ggplot(df, aes(x = "", y = Rate, fill = Response)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(label = paste0(Response, "\n", Rate, "%")),
+            position = position_stack(vjust = 0.5), size = 5, fontface = "bold", color = "white") +
+  scale_fill_manual(values = c(colors$success, colors$secondary, colors$warning)) +
+  labs(title = "Pirtobrutinib + Venetoclax Response Distribution",
+       subtitle = "100% ORR with fixed-duration therapy") +
+  theme_void() +
+  theme(plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 12, hjust = 0.5),
+        legend.position = "none")
+```
+
+*"Depth of response beyond what was expected for each medication separately"* - Dr. Jorge Castillo
+:::
+
+::::
+
+::: {.notes}
+這張投影片展示 Dana-Farber 研究的關鍵數據：
+
+**為何這項研究重要？**
+- 過去 WM 患者需要**無限期 BTKi 治療**
+- 長期用藥帶來心血管毒性風險（ibrutinib 心房顫動 23.5%）
+- 患者渴望能夠停藥的選項
+
+**試驗設計亮點**：
+- 27 名可評估患者，均有 MYD88 突變
+- **固定 24 週期**口服療法
+- 非共價 BTKi + BCL-2 抑制劑的協同作用
+
+**令人矚目的結果**：
+- **100% ORR**：所有患者都有反應
+- **56% CR/VGPR**：超過一半達到深度緩解
+- 達到 VGPR 的中位時間僅 1.9 個月
+- **無心律不整事件**：解決了傳統 BTKi 的主要顧慮
+
+**Jorge Castillo 博士的評語**強調：緩解深度超出兩藥單獨使用的預期，暗示協同作用機制。
+
+這可能成為 WM 的新治療標準，讓患者有機會在達到深度緩解後停止治療。
+:::
+
+## Loncastuximab Tesirine: ADC for High-Risk WM {.smaller}
+
+::: {.notes}
+這張投影片介紹 Loncastuximab tesirine 在高風險 WM 中的應用。
+
+**什麼是 Loncastuximab tesirine？**
+- **抗 CD19 抗體藥物偶聯物（ADC）**
+- 已獲 FDA 批准用於瀰漫性大 B 細胞淋巴瘤（DLBCL）
+- 藥物將細胞毒性載荷精準傳遞至 CD19+ 腫瘤細胞
+
+**試驗設計**：
+- 14 名患者，中位先前治療 4 線
+- **高風險特徵**：8 名 CXCR4 突變，8 名 TP53 改變
+- 固定 6 劑方案（150 µg/kg 第 1-2 週期，75 µg/kg 第 3-6 週期）
+
+**驚人結果**：
+- 整體 ORR：86%，CR/VGPR：71%
+- **TP53 改變患者**：100% 緩解率，89% CR/VGPR
+- 在 CXCR4 突變患者（通常對 BTKi 抗藥）中同樣有效
+
+**為何這很重要？**
+TP53 突變在大多數治療中預後極差，但 Loncastuximab 的作用機制繞過了 TP53 介導的凋亡途徑，直接透過 DNA 損傷殺死腫瘤細胞。
+
+**注意**：此藥物尚未獲批用於 WM，目前屬於超適應症使用。
+:::
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Phase II Trial
+
+**Background**
+
+- CD19-targeting antibody-drug conjugate
+- N=14, median 4 prior therapies
+- High-risk: 8 CXCR4+, 8 TP53-altered
+
+**Method**
+
+- Fixed 6-dose regimen
+- 150 µg/kg cycles 1-2, 75 µg/kg cycles 3-6
+
+**Results**
+
+- **Overall ORR: 86%**
+- **CR/VGPR: 71%**
+- **TP53-altered: 100% response, 89% CR/VGPR**
+- Active in CXCR4-mutant (BTKi-resistant)
+:::
+
+::: {.column width="55%"}
+```{r lonca}
+df <- data.frame(
+  Group = factor(rep(c("All Patients", "TP53-Altered"), each = 2),
+                 levels = c("All Patients", "TP53-Altered")),
+  Response = rep(c("ORR", "CR/VGPR"), 2),
+  Rate = c(86, 71, 100, 89)
+)
+
+ggplot(df, aes(x = Group, y = Rate, fill = Response)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
+            vjust = -0.5, size = 5, fontface = "bold") +
+  scale_fill_manual(values = c("ORR" = colors$secondary, "CR/VGPR" = colors$success)) +
+  scale_y_continuous(limits = c(0, 115), breaks = seq(0, 100, 25)) +
+  labs(title = "Loncastuximab in High-Risk WM",
+       subtitle = "Remarkable activity in TP53-altered patients",
+       y = "Rate (%)", x = "") +
+  theme_ash() +
+  theme(legend.position = "top")
+```
+
+**Note:** Loncastuximab FDA-approved for DLBCL, not yet for WM
+:::
+
+::::
+
+# Clinical Implications {background-color="#1A5276"}
+
+::: {.notes}
+進入臨床意涵的總結部分。
+
+經過今天的報告，我們看到 ASH 2025 在 B 細胞淋巴瘤領域帶來了多項改變臨床實務的進展。
+
+**三大主題**：
+1. **個人化醫療時代來臨**：分子檢測不再是可選項目
+2. **抗藥機制指導治療排序**：理性的藥物選擇策略
+3. **治療模式創新**：從無限期治療走向固定期限療法
+
+接下來的投影片將總結這些關鍵要點及其臨床應用意義。
+:::
+
+## Key Takeaways from ASH 2025 {.smaller}
+
+::: {.notes}
+這張總結投影片涵蓋六大臨床要點：
+
+**1. 一體適用療法的終結**
+- **診斷時分子檢測**現在直接決定最佳治療選擇
+- TP53 突變 MCL → BOVen（而非化療）
+- MYD88 野生型 WM → 需要不同的 BTKi 策略
+- CXCR4 突變 → 考慮 BTKi 抗藥性模式
+
+**2. 抗藥機制指導治療排序**
+- C481S 突變 → Pirtobrutinib 有效
+- BTK 降解劑 → 針對支架功能突變
+- 現在可以進行理性的藥物排序
+
+**3. CAR-T 製造創新**
+- GLPG5101：7 天靜脈到靜脈時間
+- 可能消除傳統 CAR-T 的 15-20% 退出率
+- 儘管商業前景不確定，技術已獲驗證
+
+**4. MZL 里程碑**
+- Liso-cel：**首個疾病專用批准療法**
+- 95.5% ORR，88.6% 24 個月持續緩解
+
+**5. 固定期限療法**
+- Pirtobrutinib + Venetoclax 在 WM：100% ORR
+- MRD 導向停藥策略可行
+
+**6. 新機制藥物**
+- BTK 降解劑（BGB-16673）：超越抑制
+- CD47 阻斷（Evorpacept）：92% CR
+
+**給聽眾的建議**：
+- 在診斷時進行全面的分子檢測
+- 根據突變狀態選擇一線治療
+- 了解抗藥機制以規劃後續治療
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### 1. End of One-Size-Fits-All
+
+- **Molecular testing at diagnosis** now determines optimal therapy
+- TP53-mutant MCL → BOVen (not chemoimmunotherapy)
+- MYD88 wild-type WM → Different BTKi approach
+- CXCR4 mutations → Consider resistance patterns
+
+### 2. Resistance Mechanisms Guide Sequencing
+
+- C481S mutation → Pirtobrutinib effective
+- BTK degraders → Target scaffold mutations
+- Rational therapy sequencing now possible
+
+### 3. CAR-T Manufacturing Innovation
+
+- GLPG5101: 7-day vein-to-vein time
+- May eliminate 15-20% dropout rates
+- Technology validated despite commercial uncertainty
+:::
+
+::: {.column width="50%"}
+### 4. MZL Milestone
+
+- **Liso-cel:** First disease-specific approved therapy
+- 95.5% ORR in evaluable patients
+- Durable responses (88.6% at 24 months)
+
+### 5. Fixed-Duration Therapies
+
+- Pirtobrutinib + Venetoclax in WM: 100% ORR
+- May replace indefinite BTKi therapy
+- MRD-guided discontinuation feasible
+
+### 6. Novel Mechanisms
+
+- **BTK degraders** (BGB-16673): Beyond inhibition
+- **CD47 blockade** (Evorpacept): 92% CR with R²
+- New targets for resistant disease
+:::
+
+::::
+
+## References {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+### Key Trials
+
+1. **ATALANTA-1:** ASH 2025 Abstract #662, Galapagos NV
+2. **ECHO Trial:** NCT02972840, FDA approval January 16, 2025
+3. **BOVen:** Blood 2025;145(5):497, NCT03824483
+4. **MAVO:** Blood 2024;144(Suppl 1):4408, NCT04855695
+5. **BRUIN:** JCO 2023, NCT03740529, FDA full approval December 2025
+6. **TRANSCEND FL MZL:** NCT04245839, FDA approval December 4, 2025
+:::
+
+::: {.column width="50%"}
+### Additional Sources
+
+- FDA.gov Drug Approvals
+- ClinicalTrials.gov
+- ASH Abstract Database
+- NCCN Guidelines (accessed December 2025)
+- Dana-Farber Cancer Institute Press Releases
+- Galapagos NV Press Releases
+:::
+:::
+
+---
+
+### Data Validation Notes
+
+- TRANSCEND FL MZL ORR: 84.4% (ITT) vs 95.5% (evaluable) - both correct for different analysis sets
+- Pirtobrutinib MCL ORR varies 50-57.8% depending on data cutoff and cohort definition
+- BGB-16673 is a BTK degrader/CDAC, not technically a classic PROTAC
+- SWOG S2005 (WM) has no efficacy results - trial ongoing
