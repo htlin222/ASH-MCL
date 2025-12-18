@@ -62,39 +62,3 @@
 .reveal h2 {
   font-size: 1.44em !important;
 }
-
-// Table styling
-.reveal table th {
-  background-color: #3d6869 !important;
-  color: white !important;
-}
-
-.reveal table td {
-  border: 1px solid #ecf0f1 !important;
-}
-
-// Callout styling
-.reveal .callout-important {
-  border-left-color: #e74c3c !important;
-}
-
-.reveal .callout-tip {
-  border-left-color: #27ae60 !important;
-}
-
-// Column layout
-.reveal .columns {
-  display: flex;
-  gap: 20px;
-}
-
-// List item spacing
-.reveal ul li {
-  margin-bottom: 0.3em;
-}
-
-// Section header slides
-.reveal section[data-background-color="#2E86AB"] h1,
-.reveal section[data-background-color="#1A5276"] h1 {
-  color: white !important;
-}
