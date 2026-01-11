@@ -91,22 +91,35 @@ Galapagos NV. ATALANTA-1 trial results. ASH 2025 Abstract #662.
 ::: {.column width="55%"}
 ```{r glpg5101-orr}
 df <- data.frame(
-  Treatment = factor(c("GLPG5101", "Brexu-cel\n(Historical)"),
-                     levels = c("GLPG5101", "Brexu-cel\n(Historical)")),
+  Treatment = factor(
+    c("GLPG5101", "Brexu-cel\n(Historical)"),
+    levels = c("GLPG5101", "Brexu-cel\n(Historical)")
+  ),
   ORR = c(100, 88),
   CRR = c(96, 70)
 )
 
-df_long <- df %>% pivot_longer(cols = c(ORR, CRR), names_to = "Response", values_to = "Rate")
+df_long <- df %>%
+  pivot_longer(cols = c(ORR, CRR), names_to = "Response", values_to = "Rate")
 
 ggplot(df_long, aes(x = Treatment, y = Rate, fill = Response)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 5, fontface = "bold") +
-  scale_fill_manual(values = c("ORR" = colors$secondary, "CRR" = colors$success)) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = c("ORR" = colors$secondary, "CRR" = colors$success)
+  ) +
   scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
-  labs(title = "Response Rates: GLPG5101 vs Historical",
-       y = "Response Rate (%)", x = "") +
+  labs(
+    title = "Response Rates: GLPG5101 vs Historical",
+    y = "Response Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "top")
 ```
@@ -174,6 +187,16 @@ GLPG5101 的關鍵優勢在於其「即時製造」技術：
 **重要警告**：2025 年 10 月，Galapagos 宣布結束細胞療法業務，影響 365 名員工。儘管技術獲得 FDA RMAT 認定，但商業前景不確定。這提醒我們：優秀的臨床數據不一定等於商業成功。
 :::
 
+## First‐line treatment of mantle cell lymphoma.
+
+![Caption: First‐line treatment of mantle cell lymphoma.](https://iili.io/fvBEroN.png)
+
+
+::: {.notes}
+<pending speaker note>
+:::
+
+
 ## ECHO trial: Acalabrutinib + BR for frontline MCL {.smaller}
 
 :::: {.columns}
@@ -206,25 +229,40 @@ Wang M, et al. Acalabrutinib plus bendamustine-rituximab in untreated MCL: ECHO 
 ::: {.column width="55%"}
 ```{r echo-pfs}
 df <- data.frame(
-  Treatment = factor(c("Acalabrutinib + BR", "Placebo + BR"),
-                     levels = c("Acalabrutinib + BR", "Placebo + BR")),
+  Treatment = factor(
+    c("Acalabrutinib + BR", "Placebo + BR"),
+    levels = c("Acalabrutinib + BR", "Placebo + BR")
+  ),
   PFS = c(66.4, 49.6)
 )
 
 ggplot(df, aes(x = Treatment, y = PFS, fill = Treatment)) +
   geom_bar(stat = "identity", width = 0.6) +
-  geom_text(aes(label = paste0(PFS, " mo")), vjust = -0.5, size = 6, fontface = "bold") +
+  geom_text(
+    aes(label = paste0(PFS, " mo")),
+    vjust = -0.5,
+    size = 6,
+    fontface = "bold"
+  ) +
   scale_fill_manual(values = c(colors$success, colors$accent)) +
   scale_y_continuous(limits = c(0, 80), breaks = seq(0, 80, 20)) +
-  labs(title = "Median Progression-Free Survival",
-       subtitle = "HR 0.73 (p=0.016)",
-       y = "Months", x = "") +
+  labs(
+    title = "Median Progression-Free Survival",
+    subtitle = "HR 0.73 (p=0.016)",
+    y = "Months",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "none")
 ```
 :::
 
 ::::
+
+
+::: {.notes}
+<pending speaker note>
+:::
 
 ## ECHO Trial: Safety & Regulatory {.smaller}
 
@@ -235,17 +273,27 @@ ggplot(df, aes(x = Treatment, y = PFS, fill = Treatment)) +
 
 ```{r echo-mrd}
 df <- data.frame(
-  Group = factor(c("Acalabrutinib", "Placebo", "Acalabrutinib", "Placebo"),
-                 levels = c("Acalabrutinib", "Placebo")),
-  Metric = c("MRD Conversion\n(pos→neg)", "MRD Conversion\n(pos→neg)",
-             "MRD Reversion\n(neg→pos)", "MRD Reversion\n(neg→pos)"),
+  Group = factor(
+    c("Acalabrutinib", "Placebo", "Acalabrutinib", "Placebo"),
+    levels = c("Acalabrutinib", "Placebo")
+  ),
+  Metric = c(
+    "MRD Conversion\n(pos→neg)",
+    "MRD Conversion\n(pos→neg)",
+    "MRD Reversion\n(neg→pos)",
+    "MRD Reversion\n(neg→pos)"
+  ),
   Rate = c(37.5, 20, 5.85, 15)
 )
 
 ggplot(df, aes(x = Metric, y = Rate, fill = Group)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 4) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 4
+  ) +
   scale_fill_manual(values = c(colors$success, colors$accent)) +
   scale_y_continuous(limits = c(0, 45)) +
   labs(title = "MRD Dynamics", y = "Rate (%)", x = "") +
@@ -318,26 +366,47 @@ Kumar A, et al. Zanubrutinib, obinutuzumab, and venetoclax in TP53-mutant MCL. *
 ::: {.column width="55%"}
 ```{r boven-efficacy}
 df <- data.frame(
-  Outcome = factor(c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD"),
-                   levels = c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD")),
+  Outcome = factor(
+    c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD"),
+    levels = c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD")
+  ),
   Rate = c(96, 88, 72, 76, 95)
 )
 
 ggplot(df, aes(x = Outcome, y = Rate, fill = Outcome)) +
   geom_bar(stat = "identity", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), vjust = -0.5, size = 5, fontface = "bold") +
-  scale_fill_manual(values = c(colors$secondary, colors$success, colors$warning,
-                                colors$primary, colors$accent)) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    vjust = -0.5,
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = c(
+      colors$secondary,
+      colors$success,
+      colors$warning,
+      colors$primary,
+      colors$accent
+    )
+  ) +
   scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
-  labs(title = "BOVen Efficacy in TP53-Mutant MCL",
-       subtitle = "Unprecedented outcomes in historically poor prognosis group",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "BOVen Efficacy in TP53-Mutant MCL",
+    subtitle = "Unprecedented outcomes in historically poor prognosis group",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "none")
 ```
 :::
 
 ::::
+
+::: {.notes}
+pending speaker note
+:::
 
 ## BOVen: Safety & Guideline Update {.smaller}
 
@@ -445,21 +514,33 @@ MAVO 試驗探討另一個無化療三聯組合：
 ::: {.column width="55%"}
 ```{r mavo-response}
 df <- data.frame(
-  Population = factor(rep(c("R/R MCL", "TN MCL", "TP53 Aberrant"), each = 2),
-                      levels = c("R/R MCL", "TN MCL", "TP53 Aberrant")),
+  Population = factor(
+    rep(c("R/R MCL", "TN MCL", "TP53 Aberrant"), each = 2),
+    levels = c("R/R MCL", "TN MCL", "TP53 Aberrant")
+  ),
   Response = rep(c("ORR", "CR"), 3),
   Rate = c(83, 78, 86, 81, 88, 78)
 )
 
 ggplot(df, aes(x = Population, y = Rate, fill = Response)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 4.5, fontface = "bold") +
-  scale_fill_manual(values = c("ORR" = colors$secondary, "CR" = colors$success)) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 4.5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = c("ORR" = colors$secondary, "CR" = colors$success)
+  ) +
   scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 25)) +
-  labs(title = "MAVO Response Rates by Population",
-       subtitle = "MRD-guided treatment discontinuation feasible",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "MAVO Response Rates by Population",
+    subtitle = "MRD-guided treatment discontinuation feasible",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "top")
 ```
@@ -517,21 +598,32 @@ Wang ML, et al. Pirtobrutinib in covalent BTKi-pretreated MCL: BRUIN study. *J C
 ::: {.column width="55%"}
 ```{r pirtobrutinib}
 df <- data.frame(
-  Metric = factor(c("ORR", "CR", "Median DOR\n(months)"),
-                  levels = c("ORR", "CR", "Median DOR\n(months)")),
+  Metric = factor(
+    c("ORR", "CR", "Median DOR\n(months)"),
+    levels = c("ORR", "CR", "Median DOR\n(months)")
+  ),
   Value = c(57.8, 20, 21.6),
   Type = c("Response", "Response", "Duration")
 )
 
 ggplot(df, aes(x = Metric, y = Value, fill = Type)) +
   geom_bar(stat = "identity", width = 0.6) +
-  geom_text(aes(label = ifelse(Type == "Response", paste0(Value, "%"), Value)),
-            vjust = -0.5, size = 5, fontface = "bold") +
-  scale_fill_manual(values = c("Response" = colors$secondary, "Duration" = colors$warning)) +
+  geom_text(
+    aes(label = ifelse(Type == "Response", paste0(Value, "%"), Value)),
+    vjust = -0.5,
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = c("Response" = colors$secondary, "Duration" = colors$warning)
+  ) +
   scale_y_continuous(limits = c(0, 70)) +
-  labs(title = "Pirtobrutinib in cBTKi-Refractory MCL",
-       subtitle = "First-in-class non-covalent BTKi",
-       y = "Value", x = "") +
+  labs(
+    title = "Pirtobrutinib in cBTKi-Refractory MCL",
+    subtitle = "First-in-class non-covalent BTKi",
+    y = "Value",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "none")
 ```
@@ -566,23 +658,43 @@ Pirtobrutinib 的安全性優勢值得強調：
 
 ```{r pirtobrutinib-safety}
 df <- data.frame(
-  Event = factor(c("AF/Flutter", "AF/Flutter", "Discontinuation\nfor AE", "Discontinuation\nfor AE"),
-                 levels = c("AF/Flutter", "Discontinuation\nfor AE")),
-  Drug = factor(c("Pirtobrutinib", "Ibrutinib", "Pirtobrutinib", "cBTKi"),
-                levels = c("Pirtobrutinib", "Ibrutinib", "cBTKi")),
+  Event = factor(
+    c(
+      "AF/Flutter",
+      "AF/Flutter",
+      "Discontinuation\nfor AE",
+      "Discontinuation\nfor AE"
+    ),
+    levels = c("AF/Flutter", "Discontinuation\nfor AE")
+  ),
+  Drug = factor(
+    c("Pirtobrutinib", "Ibrutinib", "Pirtobrutinib", "cBTKi"),
+    levels = c("Pirtobrutinib", "Ibrutinib", "cBTKi")
+  ),
   Rate = c(1.8, 12.5, 3, 15)
 )
 
 ggplot(df, aes(x = Event, y = Rate, fill = Drug)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 4) +
-  scale_fill_manual(values = c("Pirtobrutinib" = colors$success,
-                                "Ibrutinib" = colors$accent,
-                                "cBTKi" = colors$warning)) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 4
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Pirtobrutinib" = colors$success,
+      "Ibrutinib" = colors$accent,
+      "cBTKi" = colors$warning
+    )
+  ) +
   scale_y_continuous(limits = c(0, 20)) +
-  labs(title = "Safety: Pirtobrutinib vs Covalent BTKi",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "Safety: Pirtobrutinib vs Covalent BTKi",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "top")
 ```
@@ -679,21 +791,31 @@ FDA. Breyanzi (lisocabtagene maraleucel) approval for MZL. December 4, 2025. NCT
 ::: {.column width="55%"}
 ```{r lisocel}
 df <- data.frame(
-  Population = factor(rep(c("ITT (n=77)", "Evaluable (n=66)"), each = 2),
-                      levels = c("ITT (n=77)", "Evaluable (n=66)")),
+  Population = factor(
+    rep(c("ITT (n=77)", "Evaluable (n=66)"), each = 2),
+    levels = c("ITT (n=77)", "Evaluable (n=66)")
+  ),
   Response = rep(c("ORR", "CR"), 2),
   Rate = c(84.4, 55.8, 95.5, 62.1)
 )
 
 ggplot(df, aes(x = Response, y = Rate, fill = Population)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 5, fontface = "bold") +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 5,
+    fontface = "bold"
+  ) +
   scale_fill_manual(values = c(colors$secondary, colors$success)) +
   scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
-  labs(title = "Liso-cel Response Rates in MZL",
-       subtitle = "TRANSCEND FL Trial",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "Liso-cel Response Rates in MZL",
+    subtitle = "TRANSCEND FL Trial",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "top")
 ```
@@ -731,19 +853,31 @@ Liso-cel 的獨特之處在於其**1:1 CD4:CD8 定義組成**。這種精確的�
 
 ```{r lisocel-safety}
 df <- data.frame(
-  Event = factor(c("CRS\n(Any)", "CRS\n(Gr 3)", "Neuro\n(Any)", "Neuro\n(Gr 3)"),
-                 levels = c("CRS\n(Any)", "CRS\n(Gr 3)", "Neuro\n(Any)", "Neuro\n(Gr 3)")),
+  Event = factor(
+    c("CRS\n(Any)", "CRS\n(Gr 3)", "Neuro\n(Any)", "Neuro\n(Gr 3)"),
+    levels = c("CRS\n(Any)", "CRS\n(Gr 3)", "Neuro\n(Any)", "Neuro\n(Gr 3)")
+  ),
   Rate = c(76, 4, 33, 4)
 )
 
 ggplot(df, aes(x = Event, y = Rate, fill = Event)) +
   geom_bar(stat = "identity", width = 0.6) +
-  geom_text(aes(label = paste0(Rate, "%")), vjust = -0.5, size = 5, fontface = "bold") +
-  scale_fill_manual(values = c(colors$warning, colors$accent, colors$secondary, colors$accent)) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    vjust = -0.5,
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = c(colors$warning, colors$accent, colors$secondary, colors$accent)
+  ) +
   scale_y_continuous(limits = c(0, 90)) +
-  labs(title = "Liso-cel Safety in MZL",
-       subtitle = "No Grade 4-5 CRS events",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "Liso-cel Safety in MZL",
+    subtitle = "No Grade 4-5 CRS events",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "none")
 ```
@@ -819,19 +953,29 @@ BGB-16673 代表 BTK 標靶療法的下一個進化步驟：從「抑制」到�
 ::: {.column width="55%"}
 ```{r bgb16673}
 df <- data.frame(
-  Disease = factor(c("MZL", "CLL/SLL\n(200mg)"),
-                   levels = c("MZL", "CLL/SLL\n(200mg)")),
+  Disease = factor(
+    c("MZL", "CLL/SLL\n(200mg)"),
+    levels = c("MZL", "CLL/SLL\n(200mg)")
+  ),
   ORR = c(67, 94.4)
 )
 
 ggplot(df, aes(x = Disease, y = ORR, fill = Disease)) +
   geom_bar(stat = "identity", width = 0.6) +
-  geom_text(aes(label = paste0(ORR, "%")), vjust = -0.5, size = 6, fontface = "bold") +
+  geom_text(
+    aes(label = paste0(ORR, "%")),
+    vjust = -0.5,
+    size = 6,
+    fontface = "bold"
+  ) +
   scale_fill_manual(values = c(colors$secondary, colors$success)) +
   scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
-  labs(title = "BGB-16673 BTK Degrader ORR",
-       subtitle = "Active in BTKi-pretreated patients",
-       y = "ORR (%)", x = "") +
+  labs(
+    title = "BGB-16673 BTK Degrader ORR",
+    subtitle = "Active in BTKi-pretreated patients",
+    y = "ORR (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "none")
 ```
@@ -892,22 +1036,33 @@ Evorpacept 代表了一種全新的免疫檢查點機制。
 ::: {.column width="55%"}
 ```{r evorpacept}
 df <- data.frame(
-  Regimen = factor(rep(c("Evorpacept + R²", "R² Historical"), 4),
-                   levels = c("Evorpacept + R²", "R² Historical")),
-  Metric = factor(rep(c("CR", "ORR", "1yr PFS", "1yr OS"), each = 2),
-                  levels = c("CR", "ORR", "1yr PFS", "1yr OS")),
+  Regimen = factor(
+    rep(c("Evorpacept + R²", "R² Historical"), 4),
+    levels = c("Evorpacept + R²", "R² Historical")
+  ),
+  Metric = factor(
+    rep(c("CR", "ORR", "1yr PFS", "1yr OS"), each = 2),
+    levels = c("CR", "ORR", "1yr PFS", "1yr OS")
+  ),
   Rate = c(92, 50, 100, 80, 91, 75, 100, 95)
 )
 
 ggplot(df, aes(x = Metric, y = Rate, fill = Regimen)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 4) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 4
+  ) +
   scale_fill_manual(values = c(colors$success, colors$light)) +
   scale_y_continuous(limits = c(0, 115), breaks = seq(0, 100, 25)) +
-  labs(title = "Evorpacept + R² vs Historical R²",
-       subtitle = "CD47 blockade dramatically improves CR rate",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "Evorpacept + R² vs Historical R²",
+    subtitle = "CD47 blockade dramatically improves CR rate",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "top")
 ```
@@ -987,23 +1142,36 @@ Dana-Farber 的這項第二期研究是 WM 治療的重要突破。
 ::: {.column width="55%"}
 ```{r pirto-ven}
 df <- data.frame(
-  Response = factor(c("CR/VGPR", "PR", "MR"),
-                    levels = c("CR/VGPR", "PR", "MR")),
+  Response = factor(
+    c("CR/VGPR", "PR", "MR"),
+    levels = c("CR/VGPR", "PR", "MR")
+  ),
   Rate = c(56, 31, 13)
 )
 
 ggplot(df, aes(x = "", y = Rate, fill = Response)) +
   geom_bar(stat = "identity", width = 1) +
   coord_polar("y", start = 0) +
-  geom_text(aes(label = paste0(Response, "\n", Rate, "%")),
-            position = position_stack(vjust = 0.5), size = 5, fontface = "bold", color = "white") +
-  scale_fill_manual(values = c(colors$success, colors$secondary, colors$warning)) +
-  labs(title = "Pirtobrutinib + Venetoclax Response Distribution",
-       subtitle = "100% ORR with fixed-duration therapy") +
+  geom_text(
+    aes(label = paste0(Response, "\n", Rate, "%")),
+    position = position_stack(vjust = 0.5),
+    size = 5,
+    fontface = "bold",
+    color = "white"
+  ) +
+  scale_fill_manual(
+    values = c(colors$success, colors$secondary, colors$warning)
+  ) +
+  labs(
+    title = "Pirtobrutinib + Venetoclax Response Distribution",
+    subtitle = "100% ORR with fixed-duration therapy"
+  ) +
   theme_void() +
-  theme(plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(size = 12, hjust = 0.5),
-        legend.position = "none")
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5),
+    legend.position = "none"
+  )
 ```
 
 *"Depth of response beyond what was expected for each medication separately"* - Dr. Jorge Castillo
@@ -1088,21 +1256,33 @@ TP53 突變在大多數治療中預後極差，但 Loncastuximab 的作用機制
 ::: {.column width="55%"}
 ```{r lonca}
 df <- data.frame(
-  Group = factor(rep(c("All Patients", "TP53-Altered"), each = 2),
-                 levels = c("All Patients", "TP53-Altered")),
+  Group = factor(
+    rep(c("All Patients", "TP53-Altered"), each = 2),
+    levels = c("All Patients", "TP53-Altered")
+  ),
   Response = rep(c("ORR", "CR/VGPR"), 2),
   Rate = c(86, 71, 100, 89)
 )
 
 ggplot(df, aes(x = Group, y = Rate, fill = Response)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(aes(label = paste0(Rate, "%")), position = position_dodge(width = 0.7),
-            vjust = -0.5, size = 5, fontface = "bold") +
-  scale_fill_manual(values = c("ORR" = colors$secondary, "CR/VGPR" = colors$success)) +
+  geom_text(
+    aes(label = paste0(Rate, "%")),
+    position = position_dodge(width = 0.7),
+    vjust = -0.5,
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = c("ORR" = colors$secondary, "CR/VGPR" = colors$success)
+  ) +
   scale_y_continuous(limits = c(0, 115), breaks = seq(0, 100, 25)) +
-  labs(title = "Loncastuximab in High-Risk WM",
-       subtitle = "Remarkable activity in TP53-altered patients",
-       y = "Rate (%)", x = "") +
+  labs(
+    title = "Loncastuximab in High-Risk WM",
+    subtitle = "Remarkable activity in TP53-altered patients",
+    y = "Rate (%)",
+    x = ""
+  ) +
   theme_ash() +
   theme(legend.position = "top")
 ```
