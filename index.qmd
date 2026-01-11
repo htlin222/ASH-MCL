@@ -193,7 +193,21 @@ GLPG5101 的關鍵優勢在於其「即時製造」技術：
 
 
 ::: {.notes}
-<pending speaker note>
+這張圖表展示 MCL 一線治療的決策流程：
+
+**關鍵決策點**：
+1. **移植適合性**：首先評估患者是否適合自體幹細胞移植
+2. **TP53 突變狀態**：這是決定治療策略的關鍵分子標記
+
+**治療路徑**：
+- **移植適合 + TP53 野生型**：強化化療（如 Nordic 方案）後自體移植
+- **移植不適合 + TP53 野生型**：ECHO 試驗確立的 Acalabrutinib + BR
+- **TP53 突變（無論移植適合性）**：BOVen 三聯方案——這是今年的重大突破
+
+**2025 年更新重點**：
+- ECHO 試驗獲 FDA 傳統批准（2025 年 1 月 16 日）
+- BOVen 獲 NCCN 2A 類建議
+- TP53 突變檢測現在是診斷時的必要項目
 :::
 
 
@@ -261,7 +275,24 @@ ggplot(df, aes(x = Treatment, y = PFS, fill = Treatment)) +
 
 
 ::: {.notes}
-<pending speaker note>
+ECHO 試驗是 MCL 一線治療的里程碑式研究：
+
+**試驗設計**：
+- 598 名不適合移植的未治療 MCL 患者
+- 隨機分配至 Acalabrutinib + BR 或安慰劑 + BR
+- 中位追蹤 50 個月——長期數據增加可信度
+
+**主要終點達成**：
+- 中位 PFS：**66.4 個月** vs 49.6 個月
+- 風險比 0.73（p=0.016）
+- 相當於 **27% 的疾病進展或死亡風險下降**
+
+**為何這很重要？**
+1. 這是首個證明 BTKi 可在一線增強化學免疫療法的第三期試驗
+2. 針對高增殖腫瘤（Ki-67 ≥30%）獲益更顯著（HR 0.69）
+3. FDA 於 2025 年 1 月 16 日給予傳統批准——確立新的護理標準
+
+**臨床應用**：對於不適合移植且 TP53 野生型的 MCL 患者，Acalabrutinib + BR 現在是首選方案。
 :::
 
 ## ECHO Trial: Safety & Regulatory {.smaller}
@@ -405,7 +436,24 @@ ggplot(df, aes(x = Outcome, y = Rate, fill = Outcome)) +
 ::::
 
 ::: {.notes}
-pending speaker note
+BOVen 試驗是 TP53 突變 MCL 治療的重大突破：
+
+**歷史背景——為何這群患者如此難治？**
+- TP53 突變 MCL 對傳統化療幾乎無效
+- 北歐 MCL2/3 試驗數據：中位 PFS 僅 0.9 年，中位 OS 僅 1.8 年
+- 這是淋巴瘤領域最具挑戰性的亞群之一
+
+**BOVen 方案的科學設計**：
+- **Zanubrutinib**（BTKi）：阻斷 B 細胞受體信號傳導
+- **Venetoclax**（BCL-2i）：直接觸發凋亡——繞過 TP53 依賴的凋亡途徑
+- **Obinutuzumab**（Type II anti-CD20）：增強 ADCC + 直接非凋亡細胞死亡
+
+**為何結果如此驚人？**
+- 72% 的 2 年 PFS——相比歷史上不到 1 年
+- 95% 達到不可檢測的 MRD（10⁻⁵ 敏感度）
+- 這證明了無化療三聯方案可以克服 TP53 介導的化療抗性
+
+**臨床意義**：對於 TP53 突變 MCL 患者，BOVen 現在是首選方案——NCCN 已給予 2A 類建議。
 :::
 
 ## BOVen: Safety & Guideline Update {.smaller}
