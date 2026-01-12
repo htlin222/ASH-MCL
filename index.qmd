@@ -395,42 +395,17 @@ Kumar A, et al. Zanubrutinib, obinutuzumab, and venetoclax in TP53-mutant MCL. *
 :::
 
 ::: {.column width="55%"}
-```{r boven-efficacy}
-df <- data.frame(
-  Outcome = factor(
-    c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD"),
-    levels = c("ORR", "CR", "2yr PFS", "2yr OS", "uMRD")
-  ),
-  Rate = c(96, 88, 72, 76, 95)
-)
+### Efficacy Results
 
-ggplot(df, aes(x = Outcome, y = Rate, fill = Outcome)) +
-  geom_bar(stat = "identity", width = 0.7) +
-  geom_text(
-    aes(label = paste0(Rate, "%")),
-    vjust = -0.5,
-    size = 5,
-    fontface = "bold"
-  ) +
-  scale_fill_manual(
-    values = c(
-      colors$secondary,
-      colors$success,
-      colors$warning,
-      colors$primary,
-      colors$accent
-    )
-  ) +
-  scale_y_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
-  labs(
-    title = "BOVen Efficacy in TP53-Mutant MCL",
-    subtitle = "Unprecedented outcomes in historically poor prognosis group",
-    y = "Rate (%)",
-    x = ""
-  ) +
-  theme_ash() +
-  theme(legend.position = "none")
-```
+| Outcome | Rate |
+|---------|------|
+| ORR | 96% |
+| CR | 88% |
+| 2-year PFS | 72% |
+| 2-year OS | 76% |
+| uMRD (10⁻⁵) | 95% |
+
+: BOVen efficacy in TP53-mutant MCL — unprecedented outcomes in a historically poor prognosis group.
 :::
 
 ::::
@@ -644,37 +619,15 @@ Wang ML, et al. Pirtobrutinib in covalent BTKi-pretreated MCL: BRUIN study. *J C
 :::
 
 ::: {.column width="55%"}
-```{r pirtobrutinib}
-df <- data.frame(
-  Metric = factor(
-    c("ORR", "CR", "Median DOR\n(months)"),
-    levels = c("ORR", "CR", "Median DOR\n(months)")
-  ),
-  Value = c(57.8, 20, 21.6),
-  Type = c("Response", "Response", "Duration")
-)
+### Efficacy Results
 
-ggplot(df, aes(x = Metric, y = Value, fill = Type)) +
-  geom_bar(stat = "identity", width = 0.6) +
-  geom_text(
-    aes(label = ifelse(Type == "Response", paste0(Value, "%"), Value)),
-    vjust = -0.5,
-    size = 5,
-    fontface = "bold"
-  ) +
-  scale_fill_manual(
-    values = c("Response" = colors$secondary, "Duration" = colors$warning)
-  ) +
-  scale_y_continuous(limits = c(0, 70)) +
-  labs(
-    title = "Pirtobrutinib in cBTKi-Refractory MCL",
-    subtitle = "First-in-class non-covalent BTKi",
-    y = "Value",
-    x = ""
-  ) +
-  theme_ash() +
-  theme(legend.position = "none")
-```
+| Metric | Value |
+|--------|-------|
+| ORR | 57.8% |
+| CR | 20% |
+| Median DOR | 21.6 months |
+
+: Pirtobrutinib in cBTKi-refractory MCL — first-in-class non-covalent BTKi.
 :::
 
 ::::
@@ -1082,38 +1035,16 @@ Evorpacept 代表了一種全新的免疫檢查點機制。
 :::
 
 ::: {.column width="55%"}
-```{r evorpacept}
-df <- data.frame(
-  Regimen = factor(
-    rep(c("Evorpacept + R²", "R² Historical"), 4),
-    levels = c("Evorpacept + R²", "R² Historical")
-  ),
-  Metric = factor(
-    rep(c("CR", "ORR", "1yr PFS", "1yr OS"), each = 2),
-    levels = c("CR", "ORR", "1yr PFS", "1yr OS")
-  ),
-  Rate = c(92, 50, 100, 80, 91, 75, 100, 95)
-)
+### Evorpacept + R² vs Historical R²
 
-ggplot(df, aes(x = Metric, y = Rate, fill = Regimen)) +
-  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_text(
-    aes(label = paste0(Rate, "%")),
-    position = position_dodge(width = 0.7),
-    vjust = -0.5,
-    size = 4
-  ) +
-  scale_fill_manual(values = c(colors$success, colors$light)) +
-  scale_y_continuous(limits = c(0, 115), breaks = seq(0, 100, 25)) +
-  labs(
-    title = "Evorpacept + R² vs Historical R²",
-    subtitle = "CD47 blockade dramatically improves CR rate",
-    y = "Rate (%)",
-    x = ""
-  ) +
-  theme_ash() +
-  theme(legend.position = "top")
-```
+| Metric | Evorpacept + R² | R² Historical |
+|--------|-----------------|---------------|
+| CR | 92% | 50% |
+| ORR | 100% | 80% |
+| 1-year PFS | 91% | 75% |
+| 1-year OS | 100% | 95% |
+
+: CD47 blockade dramatically improves CR rate.
 :::
 
 ::::
