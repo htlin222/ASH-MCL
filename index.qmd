@@ -187,6 +187,39 @@ GLPG5101 的關鍵優勢在於其「即時製造」技術：
 **重要警告**：2025 年 10 月，Galapagos 宣布結束細胞療法業務，影響 365 名員工。儘管技術獲得 FDA RMAT 認定，但商業前景不確定。這提醒我們：優秀的臨床數據不一定等於商業成功。
 :::
 
+## Expert Opinions on GLPG5101 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Clinical Investigators
+
+- **Marie Jose Kersten, MD, PhD** from Amsterdam UMC said:
+  - **"The new and updated results demonstrate that GLPG5101 offers timely treatment with low rates of high-grade toxicities and durable responses for patients with R/R MCL."**
+  - **"We saw deep and durable responses including patients with high-risk features... a 96% CR with duration of response at 9 months of 83%."**
+  - **"We would feel very comfortable to deliver this therapy on an outpatient basis."**
+
+- **Omotayo Fasan, MBBS** from Galapagos said:
+  - **"The decentralized, 7-day manufacturing approach demonstrates that fresh, early memory CAR-T cells can be reliably delivered, enhancing physician confidence and expanding treatment access."**
+:::
+
+::: {.column width="50%"}
+### Manufacturing Innovation
+
+- **Marie Jose Kersten** on feasibility:
+  - **"Our data show that it's feasible to decentralize CAR T-cell manufacturing, and with a fresh-out/fresh-in procedure, you can have a very short vein-to-vein time."**
+
+- **Omotayo Fasan** on attrition:
+  - **"By initiating lymphodepletion immediately after cell collection, we observed a low 5% attrition rate, compared to rates of up to 30% reported in some clinical trials and real-world settings."**
+
+### ⚠️ Commercial Update
+
+- **Henry Gosebruch** (Galapagos CEO) on wind-down:
+  - **"No viable proposals were received with terms or financing that would reasonably support the business' future."**
+:::
+
+::::
+
 ## First‐line treatment of mantle cell lymphoma.
 
 ![Caption: First‐line treatment of mantle cell lymphoma.](https://iili.io/fvBEroN.png)
@@ -365,11 +398,46 @@ ECHO 試驗是一個里程碑式的第三期研究：
 **臨床意義**：此試驗導致 FDA 於 2025 年 1 月 16 日給予傳統批准，確立了 acalabrutinib + BR 作為不適合移植患者的一線標準治療。
 :::
 
+## Expert Opinions on ECHO Trial {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Lead Investigators
+
+- **Michael Wang, MD** from MD Anderson Cancer Center said:
+  - **"These positive PFS results from the phase 3 ECHO trial could provide a new standard of care for patients with MCL."**
+  - **"So no longer, BR is no longer the standard of care. Acalabrutinib plus BR is the current standard care for older patients with newly diagnosed mantle cell lymphoma."**
+  - **"I think this is a very exciting time for mantle cell lymphoma patients... I believe that we're in the process of curing many people."**
+
+- **Martin Dreyling, MD** from LMU Munich said:
+  - **"For older patients, which are the vast majority of patients [with MCL], now we have the option to treat with an on-label [regimen of a] BTK inhibitor plus chemotherapy."**
+  - **"BTK inhibitors are a mandatory part of first-line [treatment]."**
+:::
+
+::: {.column width="50%"}
+### Clinical Perspectives
+
+- **Tycel Phillips, MD** from City of Hope said:
+  - **"[The trial] did meet its primary endpoint, which was a PFS benefit, and there was a hint that there was some trend toward an OS benefit."**
+  - **"Reserve the ECHO regimen for patients who had a more difficult disease to treat."**
+
+- **Martin Dreyling** on tolerability:
+  - **"[Acalabrutinib is] better tolerated, especially regarding the typical adverse effects like atrial fibrillation or bleeding disorders, both of which are especially relevant for older patients."**
+
+### Industry Response
+
+- **Susan Galbraith, MD** from AstraZeneca said:
+  - **"These impactful results in mantle cell lymphoma show that bringing acalabrutinib to the first-line setting significantly delays disease progression."**
+:::
+
+::::
+
 ## BOVen: Chemo-free triplet for TP53-mutant MCL {.smaller}
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="40%"}
 ### Phase II (NCT03824483)
 
 **Background**
@@ -382,28 +450,21 @@ ECHO 試驗是一個里程碑式的第三期研究：
 - **Zanubrutinib + Obinutuzumab + Venetoclax**
 - MRD-guided discontinuation after 24 cycles
 
-**Results**
-
-- **ORR: 96%** | **CRR: 88%**
-- **2-year PFS: 72%** (95% CI 56-92%)
-- **2-year OS: 76%**
-- uMRD (10⁻⁵): 95% at cycle 13
-
 ::: aside
 Kumar A, et al. Zanubrutinib, obinutuzumab, and venetoclax in TP53-mutant MCL. *Blood.* 2025;145(5):497-507. doi:10.1182/blood.2024026123
 :::
 :::
 
-::: {.column width="55%"}
+::: {.column width="60%"}
 ### Efficacy Results
 
-| Outcome | Rate |
-|---------|------|
-| ORR | 96% |
-| CR | 88% |
-| 2-year PFS | 72% |
-| 2-year OS | 76% |
-| uMRD (10⁻⁵) | 95% |
+| Outcome | BOVen | Historical (Chemo) |
+|---------|-------|-------------------|
+| ORR | **96%** | 50-60% |
+| CR | **88%** | 30-40% |
+| 2-year PFS | **72%** | <20% |
+| 2-year OS | **76%** | ~40% |
+| uMRD (10⁻⁵) | **95%** | Rarely achieved |
 
 : BOVen efficacy in TP53-mutant MCL — unprecedented outcomes in a historically poor prognosis group.
 :::
@@ -489,6 +550,33 @@ BOVen 試驗是 TP53 突變 MCL 治療的重大突破：
 
 **臨床意義**：NCCN 已將 BOVen 納入 TP53 突變 MCL 的 2A 類建議。這是首個對這個高風險族群有效的無化療選擇。
 :::
+
+## Expert Opinions on BOVen Trial {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Lead Investigator
+
+- **Anita Kumar, MD** from Memorial Sloan Kettering Cancer Center said:
+  - **"P53-mutant mantle cell lymphoma is a high-risk entity. Unfortunately, patients with this subtype have poor outcomes with standard chemo-immunotherapy. The idea for this study was to develop a combination of biologically targeted therapies."**
+  - **"This is the first dedicated study with reported outcomes specifically for TP53-mutant mantle cell lymphoma, demonstrating that clinical trials are feasible in this high-risk cohort."**
+  - **"For patients with high-risk MCL with TP53 mutation, this two-year PFS [72%] was a huge improvement."**
+  - **"The BOVen combination is one of the most highly active and well-tolerated novel agent combinations in MCL."**
+:::
+
+::: {.column width="50%"}
+### Additional Expert Perspectives
+
+- **William B. Pearse, MD** from UC San Diego said:
+  - **"The BOVen trial presents a crucial opportunity to explore how BTK inhibition combined with other targeted agents may serve as a chemotherapy-sparing approach with meaningful activity."**
+  - **"The BOVen trial holds promise in advancing the understanding and management of MCL, especially in addressing the needs of patients with TP53 mutations."**
+
+- **Austin I. Kim, MD** from Dana-Farber Cancer Institute said:
+  - **"This study adds to the current literature supporting the use of triplet chemotherapy-free regimens in mantle cell lymphoma, especially in patients with a TP53 mutation."**
+:::
+
+::::
 
 ## MAVO: Acalabrutinib + Venetoclax + Obinutuzumab {.smaller}
 
@@ -720,6 +808,37 @@ ggplot(df, aes(x = Event, y = Rate, fill = Drug)) +
 
 ::::
 
+## Expert Opinions on Pirtobrutinib {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Clinical Investigators
+
+- **Michael Wang, MD** from MD Anderson Cancer Center said:
+  - **"Pirtobrutinib is really active when you have mantle cell lymphoma. It is even effective after resistance [to covalent BTK inhibitors]."**
+  - **"The response rate was very impressive with refractory patients."**
+  - On safety: **"A really impressive safety profile"** — noting some patients asked whether they were in the placebo group due to minimal side effects.
+
+- **Jennifer A. Woyach, MD** from Ohio State University said:
+  - **"This is a non-covalent inhibitor, as opposed to the other ones, which are covalent inhibitors."**
+  - **"An [adverse] effect profile might be a little bit better with pirtobrutinib because it is such a selective molecule."**
+:::
+
+::: {.column width="50%"}
+### Mechanism & Resistance
+
+- **Shuo Ma, MD, PhD** from Northwestern University said:
+  - **"If it's a C481S mutation that will be indicating resistance to the covalent BTK inhibitors, those patients can still respond to pirtobrutinib."**
+  - **"The battle continues. We have to find new ways to fight those resistance mechanisms."**
+
+- **Jeff Sharman, MD** from Willamette Valley Cancer Institute said:
+  - **"When covalent BTK inhibitors are no longer an option due to disease progression or intolerance, pirtobrutinib enables physicians to extend the benefits of targeting the BTK pathway."**
+  - **"Pirtobrutinib was able to delay subsequent treatment or death for 2.5 years in patients naive to venetoclax."**
+:::
+
+::::
+
 # Marginal Zone Lymphoma (MZL) {data-stack-name="MZL"}
 
 First CAR-T Approval and Emerging Therapies
@@ -906,6 +1025,38 @@ ggplot(df, aes(x = Event, y = Rate, fill = Event)) +
 
 ::::
 
+## Expert Opinions on Liso-cel for MZL {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Clinical Experts
+
+- **M. Lia Palomba, MD** from Memorial Sloan Kettering Cancer Center said:
+  - **"Liso-cel achieved high, lasting response rates in patients with relapsed or refractory marginal zone lymphoma, underscoring the potential of this one-time therapy to significantly improve patient outcomes."**
+  - **"Currently, the median survival for patients with MZL with multiple relapses is 3 to 5 years, signifying an urgent need for transformative therapies."**
+  - **"People with this type of lymphoma have desperately needed a treatment that has lasting effects without toxicity. Lisocabtagene maraleucel is a critical advance and the first CAR T therapy approved to treat MZL."**
+
+- **Manali Kamdar, MD** from University of Colorado said:
+  - **"Long-term data after 3 years of follow-up in the TRANSCEND FL trial with liso-cel, and the benefit in patients with high tumor burden and early progressing disease is just spectacular."**
+:::
+
+::: {.column width="50%"}
+### Regulatory & Industry
+
+- **Vinay Prasad, MD** from FDA said:
+  - **"Today's approval represents a major advancement in precision medicine, essentially turning the patient's immune system into a more effective tool to treat MZL."**
+
+- **Lynelle B. Hoch** from Bristol Myers Squibb said:
+  - **"This approval in a fifth cancer type reflects our bold vision to bring the transformational potential of cell therapy to more patients."**
+  - **"The FDA approval of Breyanzi for R/R MZL further solidifies it as the leading CD19-directed CAR T-cell therapy covering the broadest range of B-cell malignancies."**
+
+- **Rosanna Ricafort, MD** from Bristol Myers Squibb said:
+  - **"For those patients who relapse or become refractory, the disease can be quite aggressive, and there is a need for new effective and tolerable treatment options."**
+:::
+
+::::
+
 ## BGB-16673: BTK Degrader for BTKi-Resistant Disease {.smaller}
 
 ::: {.notes}
@@ -982,6 +1133,35 @@ ggplot(df, aes(x = Disease, y = ORR, fill = Disease)) +
 ```
 
 **Phase 3 trial activated:** BGB-16673 vs Pirtobrutinib head-to-head
+:::
+
+::::
+
+## Expert Opinions on BGB-16673 BTK Degrader {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Mechanism Experts
+
+- **Lydia Scarfo, MD** from Università Vita-Salute San Raffaele said:
+  - **"The greatest advantage of the BTK degrader could be related to the fact that it's able to target BTK for degradation regardless of the mutation status, meaning it's targeting for degradation both the wild-type protein [and] the mutated protein."**
+  - **"At the time of progression with covalent BTK inhibitors, a relevant proportion of patients is carrying mutated BTK. It's reassuring that the BTK degrader works in both mutated and wild-type BTK."**
+
+- **Chan Cheah, MBBS** from Linear Clinical Research (Perth) said:
+  - **"It's BTK targeting, but rather than being a small molecule inhibitor, it's got a bifunctional domain which causes degradation via polyubiquitination of BTK."**
+  - **"The most encouraging thing is that they appear to retain efficacy in both covalent and non-covalent BTK exposed patients."**
+:::
+
+::: {.column width="50%"}
+### Clinical Investigators
+
+- **Meghan Thompson, MD** from Memorial Sloan Kettering said:
+  - **"Data from CaDAnCe-101 demonstrates that BGB-16673 has a tolerable safety profile and can achieve responses in heavily pretreated patients, including those with prior BTK inhibitor treatment and BTK resistance mutations."**
+
+- **In-hye Ahn, MD** from Dana-Farber Cancer Institute said:
+  - **"The drug tags the BTK protein for ubiquitination, leading to its complete destruction by the cell's own proteasome machinery. This degradation approach is particularly critical for patients who develop resistance mutations."**
+  - **"A phase 3 head-to-head trial comparing BGB-16673 directly against pirtobrutinib has already been activated."**
 :::
 
 ::::
@@ -1267,6 +1447,36 @@ ggplot(df, aes(x = Group, y = Rate, fill = Response)) +
 ```
 
 **Note:** Loncastuximab FDA-approved for DLBCL, not yet for WM
+:::
+
+::::
+
+## Expert Opinions on WM Fixed-Duration Therapy {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Lead Investigators
+
+- **Jorge Castillo, MD** from Dana-Farber Cancer Institute said:
+  - **"The combination of the two powerful medicines induces rapid and profound responses with manageable side effects."**
+  - **"The depth of response is beyond what was expected for each of the medications separately. This combination could become a new standard of care for patients with WM."**
+  - **"[Our goal is to] provide patients with Waldenstrom's macroglobulinemia with a treatment that is non-chemotherapy, fixed duration, all oral."**
+  - **"The fact that three out of the 27 patients attain a complete response in the first six months of therapy... really is very interesting for us."**
+
+- **Steven Treon, MD** from Dana-Farber said:
+  - **"For patients with acquired resistance to covalent BTK inhibitors, newer options include pirtobrutinib or venetoclax."**
+:::
+
+::: {.column width="50%"}
+### Treatment Perspectives
+
+- **Christian Buske, MD** from University Hospital Ulm said:
+  - **"Covalent BTK inhibitors are the backbone of treatment."** But noted researchers are **"using pirtobrutinib, a non-covalent BTK inhibitor, to combine it with venetoclax to also try to limit the duration of treatment."**
+  - **"Clearly the trend goes towards chemotherapy-free treatment and in the future we will try to establish regimens which allow us to give chemotherapy-free approaches as a fixed-duration treatment for one or two years."**
+
+- **Shayna Sarosiek, MD** from Dana-Farber said:
+  - **"Emerging treatments such as BTKi combinations, novel BCL2 antagonists, BTK degraders, and immunotherapy are under investigation. Preliminary results of combination regimens have demonstrated promising deep responses."**
 :::
 
 ::::
