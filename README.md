@@ -1,3 +1,7 @@
+![GitHub stars](https://img.shields.io/github/stars/htlin222/ASH-MCL?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/htlin222/ASH-MCL?style=flat-square)
+![License](https://img.shields.io/github/license/htlin222/ASH-MCL?style=flat-square)
+
 # ASH 2025 B-Cell Lymphoma Updates
 
 [![Publish to GitHub Pages](https://github.com/htlin222/ASH-MCL/actions/workflows/publish.yml/badge.svg)](https://github.com/htlin222/ASH-MCL/actions/workflows/publish.yml)
